@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bot Control Panel</title>
+    <link rel="stylesheet", type="text/css" href="/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Welcome to Availity Bot</h2>
+
+        <% if (userLoggedIn) { %>
+            <p>✅ You have confirmed login. The bot is now active.</p>
+            <a href="/dashboard">Go to Dashboard</a>
+        <% } else { %>
+            <p>⚠️ Please confirm login before the bot can start.</p>
+            <form action="/confirm-login" method="POST">
+                <button type="submit">Confirm Login</button>
+            </form>
+        <% } %>
+    </div>
+</body>
+</html>

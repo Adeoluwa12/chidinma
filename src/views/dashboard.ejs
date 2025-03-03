@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bot Monitoring Dashboard</title>
+    <link rel="stylesheet" href="/dashboard.css">
+</head>
+<body>
+
+    <header>
+        <h1>📊 Bot Monitoring Dashboard</h1>
+    </header>
+
+    <main class="container">
+        <h3>🆕 New Members</h3>
+        <table>
+            <tr>
+                <th>Time</th>
+                <th>Member</th>
+            </tr>
+            <% if (members.length > 0) { %>
+                <% members.forEach(member => { %>
+                    <tr>
+                        <td><%= new Date(member.detectedAt).toLocaleString() %></td>
+                        <td><%= member.name %></td>
+                    </tr>
+                <% }); %>
+            <% } else { %>
+                <tr><td colspan="2">No new members detected.</td></tr>
+            <% } %>
+        </table>
+
+        <h3>📜 Activity Logs</h3>
+        <table>
+            <tr>
+                <th>Time</th>
+                <th>Log</th>
+            </tr>
+            <% if (logs.length > 0) { %>
+                <% logs.forEach(log => { %>
+                    <tr>
+                        <td><%= new Date(log.timestamp).toLocaleString() %></td>
+                        <td><%= log.message %></td>
+                    </tr>
+                <% }); %>
+            <% } else { %>
+                <tr><td colspan="2">No activity logs yet.</td></tr>
+            <% } %>
+        </table>
+
+        <a href="/" class="btn">Go Back</a>
+    </main>
+
+    <footer>
+        <p>&copy; <%= new Date().getFullYear() %> Bot Monitor. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
